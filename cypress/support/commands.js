@@ -57,7 +57,7 @@ Cypress.Commands.add("addBookNoFavorite", (book) => {
 });
 
 Cypress.Commands.add("removeAllFavorite", () => {
-  cy.visit("http://localhost:3000/favorites");
+  cy.visit("/favorites");
   cy.get(".mt-3").each(() => {
     cy.get(`.card-deck a:nth-child(${1}) .btn`).click();
   });

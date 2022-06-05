@@ -1,12 +1,15 @@
 {
   "name": "cypress",
   "version": "1.0.0",
-  "description": "practice",
+  "description": "Home Work",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run",
+    "testMobile" : "cypress run --env viewportWidth=390,viewportHeight=844",
+    "testHeaded" : "cypress open",
+    "testHeadedMobile" : "cypress open --env viewportWidth=390,viewportHeight=844"
   },
-  "author": "",
+  "author": "Andrey Gribanov",
   "license": "ISC",
   "dependencies": {
     "cypress": "^10.0.2"

@@ -1,5 +1,3 @@
-//const cypress = require("cypress");
-
 const bookOne = {
   title: "Ведьмак",
   description: "Приключение охотника на монстров",
@@ -22,6 +20,7 @@ const bookFour = {
 };
 
 beforeEach(() => {
+  cy.viewport(Cypress.env("viewportWidth"), Cypress.env("viewportHeight"));
   cy.visit("/");
   cy.login("test@test.com", "test");
 });
@@ -29,12 +28,12 @@ beforeEach(() => {
 describe("Favorite books testing", () => {
   it("Should add book to favorite through function 'add new'", () => {
     cy.addBook(bookOne);
-    cy.visit("http://localhost:3000/favorites");
+    cy.visit("/favorites");
     cy.get(".card-title").should("contain.text", bookOne.title);
   });
 
   it("Should delete book from favorite", () => {
-    cy.visit("http://localhost:3000/favorites");
+    cy.visit("/favorites");
     cy.contains(bookOne.title)
       .should("be.visible")
       .within(() => cy.get(".card-footer > .btn").click({ force: true }));
@@ -46,7 +45,7 @@ describe("Favorite books testing", () => {
     cy.contains(bookTwo.title)
       .should("be.visible")
       .within(() => cy.get(".card-footer > .btn").click({ force: true }));
-    cy.visit("http://localhost:3000/favorites");
+    cy.visit("/favorites");
     cy.contains(bookTwo.title).should("be.visible");
   });
 
